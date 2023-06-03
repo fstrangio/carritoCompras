@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de compras</title>
+</head>
+<body>
+    <h1>Productos</h1>
+
+    <form id="formulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre">
+        <label for="categoria">Categoria:</label>
+        <input type="text" id="categoria">
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio">
+        <button type="submit">Agregar</button>
+      </form>
+      <hr>
+      <form id="filtro">
+        <label for="categoria-filtro">Filtrar por categoria:</label>
+        <input type="text" id="categoria-filtro">
+        <button type="submit">Buscar</button>
+      </form>
+      <hr>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody id="productos">
+        </tbody>
+      </table>
+  
+    <script src="main.js"></script>
+</body>
+</html>
