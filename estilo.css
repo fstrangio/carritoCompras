@@ -1,0 +1,85 @@
+.imgProductos {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-top: 1rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+.colorBoton {
+  color: black;
+  background-color: orangered;
+}
+
+.colorBoton:hover {
+  color: white;
+  background-color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+.imgItems {
+  width: 150px;
+  height: 150px;
+  object-fit:contain;
+  margin-top: 1rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+
+.colorBoton {
+  color: black;
+  background-color: orangered;
+}
+
+.colorBoton:hover {
+  color: white;
+  background-color: blue;
+}
+*/
+
+
+
+/*
+#cart {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  #items {
+    list-style: none;
+    padding: 0;
+  }
+  .item {
+    margin-bottom: 10px;
+  }
+  .item input {
+    width: 30px;
+  }
+  .total {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+*/

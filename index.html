@@ -1,43 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de compras</title>
+    <title>Dragon Ball Store</title>
+    <!-- BS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- MI CSS -->
+    <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
-    <h1>Productos</h1>
+<body class="container">
+    <h1 class="text-center">Todo lo que necesita un Dragon Ball fan</h1>
+    <hr>
+    <div id="contenedorProductos" class="row"></div>
 
-    <form id="formulario">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre">
-        <label for="categoria">Categoria:</label>
-        <input type="text" id="categoria">
-        <label for="precio">Precio:</label>
-        <input type="number" id="precio">
-        <button type="submit">Agregar</button>
-      </form>
-      <hr>
-      <form id="filtro">
-        <label for="categoria-filtro">Filtrar por categoria:</label>
-        <input type="text" id="categoria-filtro">
-        <button type="submit">Buscar</button>
-      </form>
-      <hr>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Categoria</th>
-            <th>Precio</th>
-          </tr>
-        </thead>
-        <tbody id="productos">
-        </tbody>
-      </table>
-  
+    <!-- CARRITO DE COMPRAS -->
+
+    <hr>
+    <h2>Carrito de Compras</h2>
+    <h3>El total de la compra es de <span id="total"></span> </h3>
+    <button class="btn colorBoton" id="verCarrito"> Ver Carrito </button>
+    <button class="btn colorBoton" id="vaciarCarrito"> Vaciar Carrito </button>
+    <div id="contenedorCarrito" class="row"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="main.js"></script>
 </body>
 </html>
