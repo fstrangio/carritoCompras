@@ -82,12 +82,12 @@ const agregarAlCarrito = (id) => {
       const producto = productos.find(producto => producto.id === id);
       carrito.push(producto);
   }
-  //Trabajamos con el localStorage:
+  //Trabajo con el localStorage:
   localStorage.setItem("carrito", JSON.stringify(carrito));
   calcularTotal();
 }
 
-//Mostrar el carrito de compras: 
+//Muestro el carrito de compras 
 
 const verCarrito = document.getElementById("verCarrito");
 const contenedorCarrito = document.getElementById("contenedorCarrito");
@@ -96,7 +96,7 @@ verCarrito.addEventListener("click", () => {
   mostrarCarrito();
 })
 
-//Función para mostrar el carrillo: 
+//La siguiente función sirve para mostrar el carrito 
 
 const mostrarCarrito = () => {
   contenedorCarrito.innerHTML = "";
@@ -114,7 +114,7 @@ const mostrarCarrito = () => {
                               </div>
                           </div>`
       contenedorCarrito.appendChild(card);
-      //Eliminar productos del carrito: 
+      //Elimino productos del carrito 
       const boton = document.getElementById(`eliminar${producto.id}`);
       boton.addEventListener("click", () => {
           eliminarDelCarrito(producto.id);
@@ -124,7 +124,7 @@ const mostrarCarrito = () => {
   calcularTotal();
 }
 
-//Función que elimina el producto del carrito: 
+//Función que elimina productos 
 
 const eliminarDelCarrito = (id) => {
   const producto = carrito.find(producto => producto.id === id);
@@ -132,18 +132,18 @@ const eliminarDelCarrito = (id) => {
   carrito.splice(indice, 1);
   mostrarCarrito();
 
-  //Trabajamos con el localStorage: 
+  //Trabajo con el localStorage 
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-//Vaciamos todo el carrito de compras: 
+//A continuación puedo Vaciar todo el carrito
 
 const vaciarCarrito = document.getElementById("vaciarCarrito");
 vaciarCarrito.addEventListener("click", () => {
   eliminarTodoElCarrito();
 })
 
-//Función que elimina todo el carrito: 
+//Función que elimina todo el carrito 
 
 const eliminarTodoElCarrito = () => {
   carrito = [];
@@ -152,7 +152,7 @@ const eliminarTodoElCarrito = () => {
   mostrarCarrito();
 }
 
-//Mostramos mensaje con el total de la compra: 
+//Muestro el total de la compra 
 
 const total = document.getElementById("total");
 
@@ -160,7 +160,120 @@ const calcularTotal = () => {
   let totalCompra = 0;
   carrito.forEach(producto => {
       totalCompra += producto.precio * producto.cantidad;
-      //+= es igual a poner totalCompra = totalCompra + producto.precio * producto.cantidad.
   })
   total.innerHTML = `Total: $${totalCompra}`;
 }
+
+
+
+
+
+
+
+/*// Datos de los productos (simulación de carga mediante AJAX y JSON)
+const products = [
+  { id: 1, name: 'Producto 1', price: 10 },
+  { id: 2, name: 'Producto 2', price: 20 },
+  { id: 3, name: 'Producto 3', price: 30 }
+];
+
+// Función para cargar los productos en el DOM
+function loadProducts() {
+  const itemsElement = document.getElementById('items');
+  itemsElement.innerHTML = '';
+
+  products.forEach(product => {
+    const itemElement = document.createElement('li');
+    itemElement.className = 'item';
+
+    const nameLabel = document.createElement('label');
+    nameLabel.textContent = product.name;
+
+    const quantityInput = document.createElement('input');
+    quantityInput.type = 'number';
+    quantityInput.value = 0;
+
+    itemElement.appendChild(nameLabel);
+    itemElement.appendChild(quantityInput);
+
+    itemsElement.appendChild(itemElement);
+  });
+}
+
+// Función para calcular el total y mostrarlo en el DOM
+function updateTotal() {
+  const items = document.getElementsByClassName('item');
+  let total = 0;
+
+  Array.from(items).forEach(item => {
+    const quantity = parseInt(item.querySelector('input').value);
+    const productId = parseInt(item.querySelector('label').getAttribute('for'));
+    const product = products.find(p => p.id === productId);
+
+    total += quantity * product.price;
+  });
+
+  document.getElementById('total').textContent = total;
+}
+
+// Event listener para detectar cambios en los inputs de cantidad
+function setupQuantityListeners() {
+  const quantityInputs = document.querySelectorAll('.item input');
+
+  Array.from(quantityInputs).forEach(input => {
+    input.addEventListener('change', updateTotal);
+  });
+}
+
+// Función para cargar los datos de los productos y configurar los listeners
+function initialize() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      loadProducts();
+      setupQuantityListeners();
+      resolve();
+    }, 1000);
+  });
+}
+
+// Función para simular el envío del carrito al servidor (simulación de AJAX)
+function sendCartToServer() {
+  const cartItems = [];
+
+  const items = document.getElementsByClassName('item');
+  Array.from(items).forEach(item => {
+    const quantity = parseInt(item.querySelector('input').value);
+    const productId = parseInt(item.querySelector('label').getAttribute('for'));
+    const product = products.find(p => p.id === productId);
+
+    cartItems.push({ product: product.name, quantity: quantity });
+  });
+
+  // Simulación de envío del carrito al servidor utilizando fetch
+  fetch('https://api.example.com/cart', {
+    method: 'POST',
+    body: JSON.stringify({ items: cartItems }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Respuesta del servidor:', data);
+      // Aquí puedes realizar acciones adicionales después de enviar el carrito al servidor
+    })
+    .catch(error => {
+      console.error('Error al enviar el carrito:', error);
+    });
+}
+
+// Inicialización de la página
+initialize()
+  .then(() => {
+    const sendButton = document.createElement('button');
+    sendButton.textContent = 'Enviar Carrito';
+    sendButton.addEventListener('click', sendCartToServer);
+
+    document.getElementById('cart').appendChild(sendButton);
+  });
+  */
