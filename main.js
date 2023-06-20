@@ -2,11 +2,11 @@
 
 class Producto {
   constructor(id, nombre, precio, img) {
-      this.id = id;
-      this.nombre = nombre;
-      this.precio = precio;
-      this.img = img;
-      this.cantidad = 1;
+    this.id = id;
+    this.nombre = nombre;
+    this.precio = precio;
+    this.img = img;
+    this.cantidad = 1;
   }
 }
 
@@ -47,45 +47,45 @@ const contenedorProductos = document.getElementById("contenedorProductos");
 
 //Con la siguiente función muestro los productos
 
+//Con la siguiente función muestro los productos
 const mostrarProductos = () => {
   productos.forEach(producto => {
-      const card = document.createElement("div");
-      card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
-      card.innerHTML = `
-                          <div class="card">
-                              <img class="card-img-tom imgProductos" src="${producto.img}" alt="${producto.nombre}">
-                              <div class="card-body">
-                                  <h3>${producto.nombre}</h3>
-                                  <p>${producto.precio}</p>
-                                  <button class="btn colorBoton" id="boton${producto.id}"> Agregar al Carrito </button>
-                              </div>
-                          </div>`
-      contenedorProductos.appendChild(card);
+    const card = document.createElement("div");
+    card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
+    card.innerHTML = `
+      <div class="card">
+        <img class="card-img-tom imgProductos" src="${producto.img}" alt="${producto.nombre}">
+        <div class="card-body">
+          <h3>${producto.nombre}</h3>
+          <p>${producto.precio}</p>
+          <button class="btn colorBoton" id="boton${producto.id}"> Agregar al Carrito </button>
+        </div>
+      </div>`;
+    contenedorProductos.appendChild(card);
 
-      //A continuación, agrego productos al carrito
-      const boton = document.getElementById(`boton${producto.id}`);
-      boton.addEventListener("click", () => {
-          agregarAlCarrito(producto.id);
-      })
-  })
-}
+    //A continuación, agrego productos al carrito
+    const boton = document.getElementById(`boton${producto.id}`);
+    boton.addEventListener("click", () => {
+      agregarAlCarrito(producto.id);
+    });
+  });
+};
 
 mostrarProductos();
 
 //Creo la función para agregar items al carrito
-
 const agregarAlCarrito = (id) => {
   const productoEnCarrito = carrito.find(producto => producto.id === id);
   if (productoEnCarrito) {
-      productoEnCarrito.cantidad++;
+    productoEnCarrito.cantidad++;
   } else {
-      const producto = productos.find(producto => producto.id === id);
-      carrito.push(producto);
+    const producto = productos.find(producto => producto.id === id);
+    carrito.push(producto);
   }
   //Trabajo con el localStorage:
   localStorage.setItem("carrito", JSON.stringify(carrito));
   calcularTotal();
-}
+};
 
 //Muestro el carrito de compras 
 
@@ -98,31 +98,31 @@ verCarrito.addEventListener("click", () => {
 
 //La siguiente función sirve para mostrar el carrito 
 
+//La siguiente función sirve para mostrar el carrito
 const mostrarCarrito = () => {
   contenedorCarrito.innerHTML = "";
   carrito.forEach(producto => {
-      const card = document.createElement("div");
-      card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
-      card.innerHTML = `
-                          <div class="card">
-                              <img class="card-img-tom imgProductos" src="${producto.img}" alt="${producto.nombre}">
-                              <div class="card-body">
-                                  <h3>${producto.nombre}</h3>
-                                  <p>${producto.precio}</p>
-                                  <p>${producto.cantidad}</p>
-                                  <button class="btn colorBoton" id="eliminar${producto.id}"> Eliminar Producto </button>
-                              </div>
-                          </div>`
-      contenedorCarrito.appendChild(card);
-      //Elimino productos del carrito 
-      const boton = document.getElementById(`eliminar${producto.id}`);
-      boton.addEventListener("click", () => {
-          eliminarDelCarrito(producto.id);
-      })
-
-  })
+    const card = document.createElement("div");
+    card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
+    card.innerHTML = `
+      <div class="card">
+        <img class="card-img-tom imgProductos" src="${producto.img}" alt="${producto.nombre}">
+        <div class="card-body">
+          <h3>${producto.nombre}</h3>
+          <p>${producto.precio}</p>
+          <p>${producto.cantidad}</p>
+          <button class="btn colorBoton" id="eliminar${producto.id}"> Eliminar Producto </button>
+        </div>
+      </div>`;
+    contenedorCarrito.appendChild(card);
+    //Elimino productos del carrito
+    const boton = document.getElementById(`eliminar${producto.id}`);
+    boton.addEventListener("click", () => {
+      eliminarDelCarrito(producto.id);
+    });
+  });
   calcularTotal();
-}
+};
 
 //Función que elimina productos 
 
@@ -147,10 +147,10 @@ vaciarCarrito.addEventListener("click", () => {
 
 const eliminarTodoElCarrito = () => {
   carrito = [];
-  //localStorage: 
+  //localStorage:
   localStorage.clear();
   mostrarCarrito();
-}
+};
 
 //Muestro el total de la compra 
 
@@ -163,3 +163,31 @@ const calcularTotal = () => {
   })
   total.innerHTML = `Total: $${totalCompra}`;
 }
+
+//Cargo el carrito y productos desde una API
+const urlProductos = "https://jsonplaceholder.typicode.com/dbstore";
+
+const cargarProductosDesdeAPI = async () => {
+  try {
+    const response = await fetch(urlProductos);
+    const data = await response.json();
+    productos = data.map(item => new Producto(item.id, item.nombre, item.precio, item.img));
+    mostrarProductos();
+  } catch (error) {
+    console.error("Error al cargar los productos desde la API:", error);
+  }
+};
+
+const cargarCarritoDesdeLocalStorage = () => {
+  if (localStorage.getItem("carrito")) {
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+  }
+};
+
+// Inicialización de la página
+const inicializarPagina = () => {
+  cargarProductosDesdeAPI();
+  cargarCarritoDesdeLocalStorage();
+};
+
+inicializarPagina();
