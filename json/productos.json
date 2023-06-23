@@ -1,0 +1,16 @@
+[
+    {"id": 1, "nombre": "Goku", "precio": 27000, "img": "./multimedia/goku.jpg"},
+    {"id": 2, "nombre": "Goku SSJ2", "precio": 29100, "img": "multimedia/goku-ssj2.jpg"},
+    {"id": 3, "nombre": "Goku SSJ3", "precio": 32500, "img": "multimedia/goku-ssj3.jpg"},
+    {"id": 4, "nombre": "Vegeta", "precio": 25600, "img": "multimedia/vegeta.jpg"},
+    {"id": 5, "nombre": "Vegeta God", "precio": 35500, "img": "multimedia/vegeta-god2.jpg"},
+    {"id": 6, "nombre": "Gohan", "precio": 28500, "img": "multimedia/gohan.jpg"},
+    {"id": 7, "nombre": "Gotenks", "precio": 26000, "img": "multimedia/gotenks.jpg"},
+    {"id": 8, "nombre": "Esferas", "precio": 14500, "img": "multimedia/esferas.jpg"},
+    {"id": 9, "nombre": "DB Fighter Z", "precio": 12700, "img": "multimedia/db-fighterz.jpg"},
+    {"id": 10, "nombre": "DB Kakarot", "precio": 15000, "img": "multimedia/db-kakarot.jpg"},
+    {"id": 11, "nombre": "Manga 1", "precio": 4800, "img": "multimedia/dbz-manga1.jpg"},
+    {"id": 12, "nombre": "Manga 7", "precio": 4200, "img": "multimedia/dbz-manga7.jpg"},
+    {"id": 13, "nombre": "Película 2", "precio": 2500, "img": "multimedia/pelicula-2.jpg"},
+    {"id": 14, "nombre": "Película 12", "precio": 23000, "img": "multimedia/pelicula-12.jpg"}
+]

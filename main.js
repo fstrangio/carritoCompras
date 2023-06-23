@@ -12,6 +12,26 @@ class Producto {
 
 //Asocio cada producto a su imagen correspondiente
 
+const listado = document.getElementById("listado");
+const listadoProductos = "json/productos.json";
+
+fetch(listadoProductos)
+    .then(respuesta => respuesta.json())
+    .then(datos => {
+        datos.forEach(producto => {
+            listado.innerHTML += `
+                                    <p>ID: ${producto.id}</p>
+                                    <h2>Nombre: ${producto.nombre}</
+                                    h2>
+                                    <p>Precio: ${producto.precio}</p>
+                                    <p>img: ${producto.img}</p>
+
+                                  `
+        })
+    })
+    .catch(error => console.log(error))
+
+/*
 const goku = new Producto (1, "Goku", 15000, "multimedia/goku.jpg");
 const gokussj2 = new Producto (2, "Goku SSJ2", 18000, "multimedia/goku-ssj2.jpg");
 const gokussj3 = new Producto (3, "Goku SSJ3", 25000, "multimedia/goku-ssj3.jpg");
@@ -26,6 +46,7 @@ const manga1 = new Producto (11, "Manga 1", 2500, "multimedia/dbz-manga1.jpg");
 const manga7 = new Producto (12, "Manga 7", 3000, "multimedia/dbz-manga7.jpg");
 const pelicula2 = new Producto (13, "Pelicula 2", 1800, "multimedia/pelicula-2.jpg");
 const pelicula12 = new Producto (14, "Pelicula 12", 1600, "multimedia/pelicula-12.jpg");
+*/
 
 //Genero el array con todos los productos que tenemos para vender
 
